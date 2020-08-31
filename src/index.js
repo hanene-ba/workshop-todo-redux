@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+// root reducer
+import rootReducer from './reducers/index';
+//react redux 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
+// create redux store
+const store = createStore(rootReducer);
+
+// use a special React Redux component called <Provider> to magically make the store available 
+// to all container components in the application without passing it explicitly
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
@@ -15,3 +25,7 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+/*
+    * path : src/index.js
+    * description : applicatoin entry point
+ */
